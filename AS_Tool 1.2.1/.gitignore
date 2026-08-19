@@ -1,0 +1,23 @@
+# ===== 桌面版（desktop/） =====
+__pycache__/
+*.py[cod]
+desktop/anysearch_api_key.txt
+desktop/anysearch_settings.json
+desktop/downloads/
+# 命令行从仓库根目录运行时，默认输出目录在根下
+/downloads/
+
+# ===== 安卓版（android/；工程内另有 .gitignore，此处显式兜底） =====
+android/.gradle/
+android/.idea/
+android/.kotlin/
+android/local.properties
+android/.cxx/
+android/captures/
+android/.externalNativeBuild/
+android/**/build/
+*.iml
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
