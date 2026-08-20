@@ -15,10 +15,10 @@
 | `anysearch_gui.py` | 人类图形界面，AI 不要用 |
 | `anysearch_api_key.txt` | API Key（文本内容，自动读取；开源版需自行复制模板并填写） |
 
-API Key 读取顺序：
-1. 环境变量 `ANYSEARCH_API_KEY`
-2. 同目录 `anysearch_api_key.txt`
-3. 命令行 `--api-key`
+API Key 读取顺序（优先级从高到低）：
+1. 命令行 `--api-key`
+2. 环境变量 `ANYSEARCH_API_KEY`
+3. 同目录 `anysearch_api_key.txt`
 
 ---
 
@@ -82,7 +82,7 @@ import anysearch_downloader as dl
 import anysearch_link_resolver as lr
 
 # ---- API 调用 ----
-key = ""  # 留空则自动读 anysearch_api_key.txt
+key = ""  # 留空 = 匿名调用（call() 不自动读文件）；有 Key 时先自行读取再传入
 obj, raw = api.call(key, "search", {"query": "关键词", "max_results": 5})
 text = api.extract_result_text(obj)   # 拿 result.content[0].text；没有则 None
 
@@ -140,6 +140,7 @@ dl.set_custom_headers({"Referer": "https://x.com"})
 dl.DownloadCancelled   # 用户取消
 dl.DownloadError       # 下载失败（大小校验失败、解析失败、源不可用等）
 dl.HtmlPageError       # 探测到网页/假直链（DownloadError 子类；download_file 内部自动解析，解析也失败才抛出）
+dl.DownloadPaused      # 用户暂停：断点已保留，再次调用 download_file 即自动续传
 lr.ResolveError        # 解析失败（被拒/风控/跳转超限/URL 非法）
 ```
 
