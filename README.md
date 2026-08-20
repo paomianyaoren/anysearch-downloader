@@ -59,7 +59,7 @@ python anysearch_gui.py                                # 图形界面
 
 ## 许可证
 
-本项目采用 [MIT License]([LICENSE](https://github.com/paomianyaoren/AS-Tool/blob/main/AS_Tool%201.2.1/LICENSE)) 开源。使用本工具请遵守目标网站服务条款与相关法律法规，详见各目录下的免责声明。
+本项目采用 [MIT License](https://github.com/paomianyaoren/AS-Tool/blob/main/AS_Tool%201.2.1/LICENSE) 开源。使用本工具请遵守目标网站服务条款与相关法律法规，详见各目录下的免责声明。
 
 ## 更新记录
 
