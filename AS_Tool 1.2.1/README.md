@@ -49,7 +49,7 @@ python anysearch_gui.py                                # 图形界面
 
 ### 安卓版（直接安装现成 APK，免构建）
 
-1. 下载 `apk/AnySearch-v1.2.1.apk`（或到 GitHub Releases 下载同名文件）传到手机；
+1. 下载 [`apk/AnySearch-v1.2.1.apk`](https://github.com/paomianyaoren/anysearch-downloader/tree/main/AS_Tool%201.2.1/apk)（或到 GitHub Releases 下载同名文件）传到手机；
 2. 手机首次安装需允许“安装未知来源应用”，安装即可使用。
 3. 该 APK 为 **debug 签名**、仅供快速体验；不放心可按下文从源码自行构建。若提示“签名不一致”需先卸载旧版（会清空 App 内配置与未完成的下载断点，公共下载目录的文件不受影响）。
 
