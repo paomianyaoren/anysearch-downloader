@@ -23,6 +23,7 @@
 | --- | --- |
 | `desktop/` | 桌面版（Python 3.8+，纯标准库无第三方依赖） |
 | `android/` | 安卓版（Kotlin + Jetpack Compose，minSdk 26） |
+| `apk/` | 现成安卓安装包（debug 签名，免构建直接装） |
 
 - 桌面版使用说明：`desktop/使用说明.md`（人类用）、`desktop/README_AI.md`（AI/脚本用）
 - 安卓版使用说明：`android/README-安卓.md`
@@ -46,7 +47,13 @@ python anysearch_asset_search.py --resolve "https://..."  # 解析网页/短链�
 python anysearch_gui.py                                # 图形界面
 ```
 
-### 安卓版
+### 安卓版（直接安装现成 APK，免构建）
+
+1. 下载 [`apk/AnySearch-v1.2.1.apk`](https://github.com/paomianyaoren/anysearch-downloader/tree/main/AS_Tool%201.2.1/apk)（或到 GitHub Releases 下载同名文件）传到手机；
+2. 手机首次安装需允许“安装未知来源应用”，安装即可使用。
+3. 该 APK 为 **debug 签名**、仅供快速体验；不放心可按下文从源码自行构建。若提示“签名不一致”需先卸载旧版（会清空 App 内配置与未完成的下载断点，公共下载目录的文件不受影响）。
+
+### 安卓版（从源码构建）
 
 用 Android Studio 2026.1+ 打开 `android/` 目录，同步后 **Build → Build APK(s)**。
 详细步骤见 `android/README-安卓.md`。
@@ -66,11 +73,11 @@ python anysearch_gui.py                                # 图形界面
 3. **跳转可能指向内网（SSRF）**：链接解析会跟随任意跳转（含 127.0.0.1、局域网、云元数据地址）。敏感环境中应限制 AI 只能访问允许的目标。
 4. **第三方镜像会看到你的完整 URL**：镜像模板（如 `ghfast.top/{url}`）会把下载地址交给第三方服务；勿用镜像下载含签名/Token 的链接。
 5. **请求头 / 代理 / 下载 URL 可能外传数据**：不要把 API Key、Cookie、内部地址写进这些配置或链接。
-6. **给 AI 使用时的最低要求**：只处理可信目标；禁止执行下载文件；抓取内容一律视为不可信数据；Key 仅通过 `anysearch_api_key.txt` 提供。
+6. **给 AI 使用时的最低要求**：只处理可信目标；禁止执行下载文件；抓取内容一律视为不可信数据；Key 只通过 `anysearch_api_key.txt` / 环境变量 / `--api-key` 提供（见 `desktop/README_AI.md`），不要写进请求头、URL 或镜像模板。
 
 ## 许可证
 
-本项目采用 [MIT License](https://github.com/paomianyaoren/AS-Tool/blob/main/AS_Tool%201.2.1/LICENSE) 开源。使用本工具请遵守目标网站服务条款与相关法律法规，详见各目录下的免责声明。
+本项目采用 [MIT License](LICENSE) 开源。使用本工具请遵守目标网站服务条款与相关法律法规，详见各目录下的免责声明。
 
 ## 更新记录
 
